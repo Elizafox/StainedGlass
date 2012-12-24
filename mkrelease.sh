@@ -1,3 +1,6 @@
+# This script Copyright © 2012 Alex Iadicicco
+# Licensed under the WTFPL
+
 MCP="$1"
 VERSION="$2"
 VERSION_CLIENT="1.2.5"
