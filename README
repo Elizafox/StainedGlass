@@ -5,12 +5,11 @@ http://forums.technicpack.net/threads/stained-glass-mod.8384/
 
 Thus portions are (C) to them.
 
-It has been substantially reworked, in fact, it's easier to just mention what I kept from
-their code:
-- Some overrides are the same due to implementation being obvious/only one way to do it.
-- Kept the custom block renderer for panes. I put it in the client proxy.
-- BlockStainedPane.java is partially based on their logic for connecting and face rendering.
-- Some of the config stuff is still theirs; I intend to refactor it.
+It has been substantially reworked, in fact, it's easier to just mention what I kept from their code:
+ - Some overrides are the same due to implementation being obvious/only one way to do it.
+ - Kept the custom block renderer for panes. I put it in the client proxy.
+ - BlockStainedPane.java is partially based on their logic for connecting and face rendering.
+ - Some of the config stuff is still theirs; I intend to refactor it.
 
 Thanks to @aji for helping me get bootstrapped. mkrelease.sh is almost entirely his, too.
 
