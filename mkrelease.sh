@@ -27,8 +27,8 @@ if [ ! -d "$MCP/reobf/minecraft" ]; then
 fi
 
 DIR_MCP="$(readlink -f $MCP)"
-DIR_ZPM="$(dirname $(readlink -f $0))"
-DIR_RELEASE="$DIR_ZPM/release"
+DIR_STAINEDGLASS="$(dirname $(readlink -f $0))"
+DIR_RELEASE="$DIR_STAINEDGLASS/release"
 
 function getver {
 	cd $DIR_MCP
@@ -55,12 +55,12 @@ cd /
 mkdir -p "$DIR_RELEASE"
 
 cd $DIR_MCP/reobf/minecraft
-cp $DIR_ZPM/art/block.png elizacat/mc/StainedGlass/block.png
-cp $DIR_ZPM/mcmod.info mcmod.info
+cp $DIR_STAINEDGLASS/art/block.png elizacat/mc/StainedGlass/block.png
+cp $DIR_STAINEDGLASS/mcmod.info mcmod.info
 echo "Creating $JAR_CLIENT"
 jar cf "$JAR_CLIENT" *
 
 cd $DIR_MCP/reobf/minecraft_server
-cp $DIR_ZPM/mcmod.info mcmod.info
+cp $DIR_STAINEDGLASS/mcmod.info mcmod.info
 echo "Creating $JAR_SERVER"
 jar cf "$JAR_SERVER" *
