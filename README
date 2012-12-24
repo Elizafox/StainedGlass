@@ -1,0 +1,23 @@
+StainedGlass - does what it says on the tin.
+
+Partially based off of gotyaoi's code:
+http://forums.technicpack.net/threads/stained-glass-mod.8384/
+
+Thus portions are (C) to them.
+
+It has been substantially reworked, in fact, it's easier to just mention what I kept from
+their code:
+- Some overrides are the same due to implementation being obvious/only one way to do it.
+- Kept the custom block renderer for panes. I put it in the client proxy.
+- BlockStainedPane.java is partially based on their logic for connecting and face rendering.
+- Some of the config stuff is still theirs; I intend to refactor it.
+
+Thanks to @aji for helping me get bootstrapped. mkrelease.sh is almost entirely his, too.
+
+Symlinks:
+  common -> src/minecraft/elizacat/mc/StainedGlass/common
+  common -> src/minecraft_server/elizacat/mc/StainedGlass/common
+  client -> src/minecraft/elizacat/mc/StainedGlass/proxy
+  server -> src/minecraft_server/elizacat/mc/StainedGlass/proxy
+  mcmod.info -> reobf/minecraft/mcmod.info
+  mcmod.info -> reobf/minecraft_server/mcmod.info

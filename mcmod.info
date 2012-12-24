@@ -1,0 +1,14 @@
+[{
+	"modid": "mod_StainedGlass",
+	"name": "Stained Glass mod",
+	"description": "It does what it says on the tin",
+	"version": "0.1dev",
+	"credits": "",
+	"authors": ["Elizacat", "gotyaoi"],
+	"logoFile": "",
+	"url": "Eventually...",
+	"updateUrl": "",
+	"parent": "",
+	"screenshots": [],
+	"dependencies": ["mod_MinecraftForge"]
+}]
