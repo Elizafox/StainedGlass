@@ -4,19 +4,17 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.src.Block;
-import net.minecraft.src.BlockPane;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.World;
-import net.minecraft.src.forge.ITextureProvider;
 
 // I hate notch.
-public class BlockStainedPane extends Block {
-	private int sideTextureIndex;
+public class BlockStainedPaneCommon extends Block {
+	public int sideTextureIndex;
 
-	public BlockStainedPane(int id, int tex, int sidetex, Material material) {
+	public BlockStainedPaneCommon(int id, int tex, int sidetex, Material material) {
 		super(id, tex, material);
 		this.sideTextureIndex = sidetex;
 
@@ -25,47 +23,34 @@ public class BlockStainedPane extends Block {
 		setBlockName(Common.buildLocalizationString("glassPane"));
 	}
 
-	public int getRenderBlockPass() {
-		return 1;
-	}
-	
-	public int getBlockTextureFromSideAndMetadata(int side, int meta) {
-		return meta;
-	}
-	
 	@Override
 	public int damageDropped(int meta) {
 		return meta;
 	}
-	
+
+	@Override	
 	public int getRenderType() {
-		return mod_StainedGlass.renderID;
-	}
-	
-	public String getTextureFile() {
-		return Common.BLOCKTEX_PNG;
+		return Common.renderID;
 	}
 	
 	@Override
 	public void addCreativeItems(ArrayList itemList) {
 		for( int i = 0 ; i < 16 ; i++ ){
-			itemList.add( new ItemStack(this, 1, i));
+			itemList.add(new ItemStack(this, 1, i));
 		}
 	}
 
+	@Override
 	public boolean isOpaqueCube() {
 		return false;
 	}
 
+	@Override
 	public boolean renderAsNormalBlock() {
 		return false;
 	}
 
-	public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int x, int y, int z, int side) {
-		int otherblock = par1IBlockAccess.getBlockId(x, y, z);
-		return otherblock != Block.thinGlass.blockID && side != this.blockID ? super.shouldSideBeRendered(par1IBlockAccess, x, y, z, side) : false;
-	}
-
+	@Override
 	public void getCollidingBoundingBoxes(World par1World, int par2, int par3, int par4, AxisAlignedBB par5AxisAlignedBB, ArrayList par6ArrayList) {
 		boolean var7 = this.canThisPaneConnectToThisBlockID(par1World.getBlockId(par2, par3, par4 - 1));
 		boolean var8 = this.canThisPaneConnectToThisBlockID(par1World.getBlockId(par2, par3, par4 + 1));
@@ -103,10 +88,13 @@ public class BlockStainedPane extends Block {
 		}
 	}
 
+	// WHY is this not client only?!?!?!?!
+	@Override
 	public void setBlockBoundsForItemRender() {
 		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 	}
 
+	@Override
 	public void setBlockBoundsBasedOnState(IBlockAccess par1IBlockAccess, int par2, int par3, int par4) {
 		float var5 = 0.4375F;
 		float var6 = 0.5625F;
@@ -144,10 +132,6 @@ public class BlockStainedPane extends Block {
 		}
 
 		this.setBlockBounds(var5, 0.0F, var7, var6, 1.0F, var8);
-	}
-
-	public int getSideTextureIndex() {
-		return this.sideTextureIndex;
 	}
 
 	public boolean canThisPaneConnectToThisBlockID(int par1) {

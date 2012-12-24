@@ -1,32 +1,49 @@
 package elizacat.mc.StainedGlass.proxy;
 
 import java.io.File;
+import java.util.logging.Level;
+
+import cpw.mods.fml.common.FMLCommonHandler;
+
 import net.minecraft.client.Minecraft;
+
 import net.minecraft.src.Block;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.EntityRenderer;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
 import net.minecraft.src.ModLoader;
 import net.minecraft.src.RenderBlocks;
+import net.minecraft.src.EntityRenderer;
+
 import net.minecraft.src.Tessellator;
-import net.minecraft.src.TileEntity;
 import net.minecraft.src.World;
 
-import elizacat.mc.StainedGlass.common.BlockStainedPane;
-import elizacat.mc.StainedGlass.common.mod_StainedGlass;
+import net.minecraft.src.forge.Configuration;
+import net.minecraft.src.forge.NetworkMod;
+import net.minecraft.src.forge.MinecraftForgeClient;
 
-public class Proxy {
-	public static File getConfig() {
-		return new File(new File(Minecraft.getMinecraftDir(), "config"), "StainedGlass.cfg");
-	}
+import elizacat.mc.StainedGlass.common.Common;
+
+public class mod_StainedGlass extends NetworkMod {
+	public static int renderID;
+
+	public Configuration config = new Configuration(new File(new File(Minecraft.getMinecraftDir(), "config"), "StainedGlass.cfg"));
 	
+	public void load() {
+		MinecraftForgeClient.preloadTexture(Common.BLOCKTEX_PNG);
+	
+		renderID = ModLoader.getUniqueBlockModelID(this, false);
+
+		// Load config
+		Common.loadConfig(config);
+		Common.initBlocks();
+	}
+
 	// This is gotyaoi's custom render function
 	// "copied mostly from renderBlocks. I'll try to get it cleaned up some in the next release. For now it's pretty safe to ignore it."
-	public static boolean renderWorldBlock(RenderBlocks render, IBlockAccess access, int x, int y, int z, Block genBlock, int renderType) {
-		if(renderType == mod_StainedGlass.renderID){
+	public boolean renderWorldBlock(RenderBlocks render, IBlockAccess access, int x, int y, int z, Block genBlock, int renderType) {
+		if(renderType == renderID){
 			BlockStainedPane block = (BlockStainedPane)genBlock;
 			int var5 = access.getHeight();
 			Tessellator var6 = Tessellator.instance;
@@ -322,6 +339,18 @@ public class Proxy {
 			}
 			return true;
 		}
+		return false;
+	}
+
+	public String getVersion() {
+		return Common.VERSION;
+	}
+	
+	public boolean clientSideRequired() {
+		return true;
+	}
+	
+	public boolean serverSideRequired() {
 		return false;
 	}
 }
