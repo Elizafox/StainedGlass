@@ -10,6 +10,9 @@ It has been substantially reworked, in fact, it's easier to just mention what I 
  - Kept the custom block renderer for panes. I put it in the client mod class.
  - BlockStainedPane.java is partially based on their logic for connecting and face rendering.
 
+Things to do:
+ - Fix the pane renderer so it doesn't look backwards when viewed from the obverse side
+
 Thanks to @aji for helping me get bootstrapped. mkrelease.sh is almost entirely his, too.
 
 Symlinks:
@@ -19,3 +22,4 @@ Symlinks:
   server -> src/minecraft_server/elizacat/mc/StainedGlass/proxy
   mcmod.info -> reobf/minecraft/mcmod.info
   mcmod.info -> reobf/minecraft_server/mcmod.info
+

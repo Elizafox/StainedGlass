@@ -158,8 +158,9 @@ public class BlockStainedPane extends Block {
 		this.setBlockBounds(var5, 0.0F, var7, var6, 1.0F, var8);
 	}
 
-	public int getSideTextureIndex() {
-		return this.sideTextureIndex;
+	public int getSideTextureIndex(int sidetex) {
+		return sidetex; // TODO: specific side textures.
+		//return this.sideTextureIndex;
 	}
 
 	public boolean canThisPaneConnectToThisBlockID(int par1) {

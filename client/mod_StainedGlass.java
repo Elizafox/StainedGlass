@@ -32,7 +32,6 @@ public class mod_StainedGlass extends NetworkMod {
 	
 	public void load() {
 		MinecraftForgeClient.preloadTexture(Common.BLOCKTEX_PNG);
-	
 		renderID = ModLoader.getUniqueBlockModelID(this, false);
 
 		// Load config
@@ -77,7 +76,7 @@ public class mod_StainedGlass extends NetworkMod {
 			{
 				var68 = access.getBlockMetadata(x, y, z);
 				var15 = block.getBlockTextureFromSideAndMetadata(0, var68);
-				var16 = block.getSideTextureIndex();
+				var16 = block.getSideTextureIndex(var68);
 			}
 			var68 = (var15 & 15) << 4;
 			int var17 = var15 & 240;
