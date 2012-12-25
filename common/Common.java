@@ -11,6 +11,7 @@ import net.minecraft.src.Material;
 import net.minecraft.src.ModLoader;
 
 import net.minecraft.src.forge.Configuration;
+import net.minecraft.src.forge.Property;
 
 // Isn't this magical...
 import elizacat.mc.StainedGlass.proxy.BlockStainedPane;
@@ -36,12 +37,23 @@ public class Common {
 	// Used for client, kept here for symbol accessibility reasons.
 	public static int renderID;
 
+	private static int getBlockID(Configuration config, String name, String comment, int defaultID) {
+		Property prop;
+
+		prop = config.getOrCreateBlockIdProperty(name, defaultID);
+		prop.comment = comment;
+		return prop.getInt();
+	}
+
 	public static void loadConfig(Configuration config) {
 		try {
+			Property prop;
+
 			config.load();
-			stainedGlassID = Integer.parseInt(config.getOrCreateBlockIdProperty("stainedGlass", defaultGlassID).value);
-			stainedGlassGlowingID = Integer.parseInt(config.getOrCreateBlockIdProperty("stainedGlowing", defaultGlassGlowingID).value);
-			stainedPaneID = Integer.parseInt(config.getOrCreateBlockIdProperty("stainedPane", defaultGlassPaneID).value);
+
+			stainedGlassID = getBlockID(config, "stainedGlass", "Normal stained glass", defaultGlassID);
+			stainedGlassGlowingID = getBlockID(config, "stainedGlowing", "Glowing stained glass", defaultGlassGlowingID);
+			stainedPaneID = getBlockID(config, "stainedPane", "Stained pane", defaultGlassPaneID);
 		}
 		catch (Exception e) {
 			FMLCommonHandler.instance().getFMLLogger().log(Level.SEVERE, "mod_StainedGlass encountered a problem loading it's configuration", e);
