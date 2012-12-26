@@ -143,6 +143,17 @@ public class BlockStainedPane extends Block {
 	}
 
 	public boolean canThisPaneConnectToThisBlockID(int par1) {
-		return this.blockID == Block.fenceIron.blockID ? Block.opaqueCubeLookup[par1] || par1 == this.blockID || par1 == Block.glass.blockID || par1 == Common.stainedGlass.blockID : Block.opaqueCubeLookup[par1] || par1 == Block.glass.blockID || par1 == Common.stainedPane.blockID || par1 == Common.stainedGlass.blockID || par1 == Block.thinGlass.blockID;
+		if (Block.opaqueCubeLookup[par1] ||
+				// ourselves
+				par1 == this.blockID ||
+				// Vanilla glass/panes
+				par1 == Block.fenceIron.blockID || par1 == Block.thinGlass.blockID || par1 == Block.glass.blockID ||
+				// Stained glass
+				par1 == Common.stainedPane.blockID || par1 == Common.stainedGlass.blockID || par1 == Common.stainedGlassGlowing.blockID ||
+				// Smooth glass
+				par1 == Common.smoothPane.blockID || par1 == Common.smoothGlass.blockID || par1 == Common.smoothGlassGlowing.blockID)
+			return true;
+		else
+			return false;
 	}
 }

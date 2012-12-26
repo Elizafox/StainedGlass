@@ -8,7 +8,7 @@ Thus portions are (C) to them.
 It has been substantially reworked, in fact, it's easier to just mention what I kept from their code:
  - Some overrides are the same due to implementation being obvious/only one way to do it.
  - Kept the custom block renderer for panes. I put it in the client mod class.
- - BlockStainedPane.java is partially based on their logic for connecting and face rendering.
+ - BlockStainedPane.java is partially based on their logic for face rendering.
 
 Things to do:
  - Fix the pane renderer so it doesn't look backwards when viewed from the obverse side
