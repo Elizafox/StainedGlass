@@ -2,7 +2,7 @@
 	"modid": "mod_StainedGlass",
 	"name": "Stained Glass mod",
 	"description": "It does what it says on the tin",
-	"version": "0.2dev",
+	"version": "0.3dev",
 	"credits": "",
 	"authors": ["Elizacat", "gotyaoi"],
 	"logoFile": "",
