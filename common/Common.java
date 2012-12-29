@@ -117,7 +117,7 @@ public class Common {
 		String name = String.format("%s glowing glass", getColour(i));
 
 		recipe = new Object[]{ new ItemStack(stainedGlass, 1, i), Item.lightStoneDust };
-		ModLoader.addShapelessRecipe(new ItemStack(stainedGlassGlowing, 1, ~i & 15), recipe);
+		ModLoader.addShapelessRecipe(new ItemStack(stainedGlassGlowing, 1, i), recipe);
 
 		recipe = new Object[]{ Block.glass, new ItemStack(Item.dyePowder, 1, i), Item.lightStoneDust };
 		ModLoader.addShapelessRecipe(new ItemStack(stainedGlassGlowing, 1, ~i & 15), recipe);
@@ -137,7 +137,7 @@ public class Common {
 		Object[] recipe = new Object[]{ new ItemStack(stainedGlass, 1, i), Block.sand };
 		String name = String.format("%s smooth glass", getColour(i));
 
-		ModLoader.addShapelessRecipe(new ItemStack(smoothGlass, 1, ~i & 15), recipe);
+		ModLoader.addShapelessRecipe(new ItemStack(smoothGlass, 1, i), recipe);
 		ModLoader.addLocalization(buildLocalizationString("smoothGlass", i) + ".name", name);
 	}
 
