@@ -10,6 +10,6 @@
 	</target>
 
 	<target name="jar">
-		<jar destfile="stainedglass-0.3-mcpc-1.2.5.jar" basedir="build" />
+		<jar destfile="stainedglass-0.3.1-mcpc-1.2.5.jar" basedir="build" />
 	</target>
 </project>

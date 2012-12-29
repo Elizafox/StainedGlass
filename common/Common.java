@@ -18,7 +18,7 @@ import elizacat.mc.StainedGlass.proxy.BlockStainedPane;
 
 public class Common {
 	public static final String NAME = "StainedGlass";
-	public static final String VERSION = "0.3dev";
+	public static final String VERSION = "0.3.1dev";
 
 	public static final String BLOCKTEX_PNG = "elizacat/mc/StainedGlass/block.png";
 
